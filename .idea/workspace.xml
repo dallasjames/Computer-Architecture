@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4899ec13-d8e9-4ffe-affe-5bb60c5d80f8" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1jTu45dw3giHACevd3sYkjLeh9Q" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Python Demo" />
+  </component>
+  <component name="RunManager">
+    <configuration name="ls8" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Computer-Architecture" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ls8" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ls8/ls8.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.ls8" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4899ec13-d8e9-4ffe-affe-5bb60c5d80f8" name="Default Changelist" comment="" />
+      <created>1603840208946</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1603840208946</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1804" y="1087" key="FileChooserDialogImpl" timestamp="1604014790161">
+      <screen x="1280" y="900" width="1600" height="900" />
+    </state>
+    <state x="1804" y="1087" key="FileChooserDialogImpl/1280.900.1600.900/2556.0.1440.900/0.242.1280.1024/2880.900.1366.768@1280.900.1600.900" timestamp="1604014790161" />
+    <state width="1573" height="190" key="GridCell.Tab.0.bottom" timestamp="1603865066667">
+      <screen x="1280" y="900" width="1600" height="900" />
+    </state>
+    <state width="1573" height="190" key="GridCell.Tab.0.bottom/1280.900.1600.900/2556.0.1440.900/0.242.1280.1024/2880.900.1366.768@1280.900.1600.900" timestamp="1603865066667" />
+    <state width="1573" height="190" key="GridCell.Tab.0.center" timestamp="1603865066667">
+      <screen x="1280" y="900" width="1600" height="900" />
+    </state>
+    <state width="1573" height="190" key="GridCell.Tab.0.center/1280.900.1600.900/2556.0.1440.900/0.242.1280.1024/2880.900.1366.768@1280.900.1600.900" timestamp="1603865066667" />
+    <state width="1573" height="190" key="GridCell.Tab.0.left" timestamp="1603865066667">
+      <screen x="1280" y="900" width="1600" height="900" />
+    </state>
+    <state width="1573" height="190" key="GridCell.Tab.0.left/1280.900.1600.900/2556.0.1440.900/0.242.1280.1024/2880.900.1366.768@1280.900.1600.900" timestamp="1603865066667" />
+    <state width="1573" height="190" key="GridCell.Tab.0.right" timestamp="1603865066667">
+      <screen x="1280" y="900" width="1600" height="900" />
+    </state>
+    <state width="1573" height="190" key="GridCell.Tab.0.right/1280.900.1600.900/2556.0.1440.900/0.242.1280.1024/2880.900.1366.768@1280.900.1600.900" timestamp="1603865066667" />
+  </component>
+</project>
