@@ -29,7 +29,9 @@ class CPU:
         with open(sys.argv[1]) as f:
             for line in f:
                 line_split = line.split('#')
-                command = line_split[0]
+                command = line_split[0].strip()
+                if command == "":
+                    continue
                 command_num = int(command, 2)
                 program.append(command_num)
 
@@ -99,3 +101,17 @@ class CPU:
             elif ir == 0b10100010:
                 self.alu("MUL", operand_a, operand_b)
                 self.pc += 1
+
+            elif ir == 0b01000101:
+                reg_address = self.ram_read(self.pc + 1)
+                value = self.reg[reg_address]
+                self.reg[7] -= 1
+                self.ram[self.reg[7]] = value
+                self.pc += 2
+
+            elif ir == 0b01000110:
+                reg_address = self.ram_read(self.pc + 1)
+                value = self.ram[self.reg[7]]
+                self.reg[reg_address] = value
+                self.reg[7] += 1
+                self.pc += 2
