@@ -1,6 +1,7 @@
 """CPU functionality."""
 
 import sys
+import time
 
 
 class CPU:
@@ -51,6 +52,7 @@ class CPU:
 
         if op == "ADD":
             self.reg[reg_a] += self.reg[reg_b]
+            self.pc += 2
         elif op == "MUL":
             self.reg[reg_a] = self.reg[reg_a] * self.reg[reg_b]
             self.pc += 2
@@ -81,14 +83,15 @@ class CPU:
         """Run the CPU."""
         running = True
         while running:
+            sp = 7
             ir = self.ram[self.pc]
 
             operand_a = self.ram[self.pc + 1]
             operand_b = self.ram[self.pc + 2]
 
             if ir == 0b00000001:
-                running = self.hlt()
                 self.pc += 1
+                running = False
 
             elif ir == 0b10000010:
                 self.ldi(operand_a, operand_b)
@@ -102,16 +105,30 @@ class CPU:
                 self.alu("MUL", operand_a, operand_b)
                 self.pc += 1
 
+            elif ir == 0b10100000:
+                self.alu("ADD", operand_a, operand_b)
+                self.pc += 1
+
             elif ir == 0b01000101:
                 reg_address = self.ram_read(self.pc + 1)
                 value = self.reg[reg_address]
-                self.reg[7] -= 1
-                self.ram[self.reg[7]] = value
+                self.reg[sp] -= 1
+                self.ram[self.reg[sp]] = value
                 self.pc += 2
 
             elif ir == 0b01000110:
                 reg_address = self.ram_read(self.pc + 1)
-                value = self.ram[self.reg[7]]
+                value = self.ram[self.reg[sp]]
                 self.reg[reg_address] = value
-                self.reg[7] += 1
+                self.reg[sp] += 1
                 self.pc += 2
+
+            elif ir == 0b01010000:
+                self.reg[sp] -= 1
+                self.ram[self.reg[sp]] = self.pc + 2
+                reg_num = self.ram[self.pc + 1]
+                self.pc = self.reg[reg_num]
+
+            elif ir == 0b00010001:
+                self.pc = self.ram[self.reg[sp]]
+                self.reg[sp] += 1
