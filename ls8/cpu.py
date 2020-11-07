@@ -1,5 +1,3 @@
-"""CPU functionality."""
-
 import sys
 import time
 
@@ -12,6 +10,9 @@ class CPU:
         self.reg = [0] * 8
         self.ram = [0] * 256
         self.pc = 0
+        self.l = 0
+        self.g = 0
+        self.e = 0
 
     def hlt(self):
         return False
@@ -52,10 +53,21 @@ class CPU:
 
         if op == "ADD":
             self.reg[reg_a] += self.reg[reg_b]
-            self.pc += 2
         elif op == "MUL":
             self.reg[reg_a] = self.reg[reg_a] * self.reg[reg_b]
-            self.pc += 2
+        elif op == "CMP":
+            if self.reg[reg_a] == self.reg[reg_b]:
+                self.e = 1
+                self.l = 0
+                self.g = 0
+            elif self.reg[reg_a] < self.reg[reg_b]:
+                self.e = 0
+                self.l = 1
+                self.g = 0
+            else:
+                self.e = 0
+                self.l = 0
+                self.g = 1
         else:
             raise Exception("Unsupported ALU operation")
 
@@ -89,46 +101,54 @@ class CPU:
             operand_a = self.ram[self.pc + 1]
             operand_b = self.ram[self.pc + 2]
 
-            if ir == 0b00000001:
+            if ir == 0b00000001:  # HALT
+                running = self.hlt()
                 self.pc += 1
-                running = False
-
-            elif ir == 0b10000010:
+            elif ir == 0b10000010:  # LDI
                 self.ldi(operand_a, operand_b)
                 self.pc += 3
-
-            elif ir == 0b01000111:
+            elif ir == 0b01000111:  # PRN
                 self.prn(operand_a)
                 self.pc += 2
-
-            elif ir == 0b10100010:
+            elif ir == 0b10100010:  # MUL
                 self.alu("MUL", operand_a, operand_b)
-                self.pc += 1
-
-            elif ir == 0b10100000:
+                self.pc += 3
+            elif ir == 0b10100000:  # ADD
                 self.alu("ADD", operand_a, operand_b)
-                self.pc += 1
-
-            elif ir == 0b01000101:
+                self.pc += 3
+            elif ir == 0b01000101:  # PUSH
                 reg_address = self.ram_read(self.pc + 1)
                 value = self.reg[reg_address]
                 self.reg[sp] -= 1
                 self.ram[self.reg[sp]] = value
                 self.pc += 2
-
-            elif ir == 0b01000110:
+            elif ir == 0b01000110:  # POP
                 reg_address = self.ram_read(self.pc + 1)
                 value = self.ram[self.reg[sp]]
                 self.reg[reg_address] = value
                 self.reg[sp] += 1
                 self.pc += 2
-
-            elif ir == 0b01010000:
+            elif ir == 0b01010000:  # CALL
                 self.reg[sp] -= 1
                 self.ram[self.reg[sp]] = self.pc + 2
                 reg_num = self.ram[self.pc + 1]
                 self.pc = self.reg[reg_num]
-
-            elif ir == 0b00010001:
+            elif ir == 0b00010001:  # RET
                 self.pc = self.ram[self.reg[sp]]
                 self.reg[sp] += 1
+                self.pc += 1
+            elif ir == 0b10100111:  # CMP
+                self.alu("CMP", operand_a, operand_b)
+                self.pc += 3
+            elif ir == 0b01010101:  # JEQ
+                if self.e == 1:
+                    self.pc = self.reg[operand_a]
+                else:
+                    self.pc += 2
+            elif ir == 0b01010110:  # JNE
+                if self.e == 0:
+                    self.pc = self.reg[operand_a]
+                else:
+                    self.pc += 2
+            elif ir == 0b01010100:
+                self.pc = self.reg[operand_a]
